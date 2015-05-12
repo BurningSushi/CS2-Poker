@@ -30,7 +30,7 @@ public class Hand implements Comparable {
         hand(1).toString.equals("11"+firstSuit) &&
         hand(2).toString.equals("12"+firstSuit) &&
         hand(3).toString.equals("13"+firstSuit) &&
-        hand(4).toString.equals("14"+firstSuit));
+        hand(4).toString.equals("14"+firstSuit))
        return "Royal Flush";
      //Straight Flush
      for(int i = 0; i < 5; i++)
@@ -38,14 +38,14 @@ public class Hand implements Comparable {
         (hand(1).value==i+1 && hand(1).suit.equals(firstSuit)) &&
         (hand(2).value==i+3 && hand(2).suit.equals(firstSuit)) &&
         (hand(3).value==i+4 && hand(3).suit.equals(firstSuit)) &&
-        (hand(4).value==i+5 && hand(4).suit.equals(firstSuit)));
+        (hand(4).value==i+5 && hand(4).suit.equals(firstSuit)))
         return "Straight Flush";
      //Four of a Kind
      if(hand(0).value == hand(3).value || hand(1).value == hand(4).value)
         return "Four of a Kind,";
      //Full House
      if((hand(0).value==hand(1) && hand(2).value==hand(4).value) ||
-        (hand(0).value==hand(2) && hand(3).value==hand(4).value) );
+        (hand(0).value==hand(2) && hand(3).value==hand(4).value) )
         return "Full House";
      //Flush
      String[] otherSuits = { hand(1).suit, hand(2).suit, hand(3).suit, hand(4).suit};
@@ -88,46 +88,25 @@ public class Hand implements Comparable {
 
    }
 
-   public String compareTo(Object x, Object y){
-      Hand hand1 = (Hand)x;
-      Hand hand2 = (Hand)y;
+   public int compareTo(Object y){
+      Hand hand1 = this;
       //TODO: Compare hands by ordering above
       if(hand1.handValue().equals("Royal Flush"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Royal Flush"))
-        return "Hand 2 Wins";
+        return 9;
       if(hand1.handValue().equals("Straight Flush"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Straight Flush"))
-        return "Hand 2 Wins";
+        return 8;
       if(hand1.handValue().equals("Four of a Kind"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Four of a Kind"))
-        return "Hand 2 Wins";
+        return 7;
       if(hand1.handValue().equals("Full House"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Full House"))
-        return "Hand 2 Wins";
+        return 6;
       if(hand1.handValue().equals("Flush"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Flush"))
-        return "Hand 2 Wins";
+        return 5;
       if(hand1.handValue().equals("Three of a Kind"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Three of a Kind"))
-        return "Hand 2 Wins";
+        return 4;
       if(hand1.handValue().equals("Two Pair"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("Two Pair"))
-        return "Hand 2 Wins";
+        return 3;
       if(hand1.handValue().equals("One Pair"))
-        return "Hand 1 Wins";
-      if(hand2.handValue().equals("One Pair"))
-        return "Hand 2 Wins";
-      if(hand1.value > hand2.value)
-        return "Hand 1 Wins";
-      if(hand2.value > hand1.value)
-        return "Hand 2 Wins";
-      else{return "Tie";}
+        return 2;
+      else{ return 1;}
    }
 }
