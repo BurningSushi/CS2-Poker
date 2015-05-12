@@ -19,36 +19,34 @@ public class Hand implements Comparable {
       return hand.toString();
    }
 
-
-
    public String handValue() {
      //return "TODO: String of Best Hand; may need helper methods";
      //BEST
      //Royal Flush
-     String firstSuit = hand(0).suit;
-     if(hand(0).value==10 &&
-        hand(1).toString.equals("11"+firstSuit) &&
-        hand(2).toString.equals("12"+firstSuit) &&
-        hand(3).toString.equals("13"+firstSuit) &&
-        hand(4).toString.equals("14"+firstSuit))
+     String firstSuit = hand.get(0).suit;
+     if(hand.get(0).value==10 &&
+        hand.get(1).toString().equals("J"+firstSuit) &&
+        hand.get(2).toString().equals("Q"+firstSuit) &&
+        hand.get(3).toString().equals("K"+firstSuit) &&
+        hand.get(4).toString().equals("A"+firstSuit))
        return "Royal Flush";
      //Straight Flush
      for(int i = 0; i < 5; i++)
-      if(hand(0).value==i &&
-        (hand(1).value==i+1 && hand(1).suit.equals(firstSuit)) &&
-        (hand(2).value==i+3 && hand(2).suit.equals(firstSuit)) &&
-        (hand(3).value==i+4 && hand(3).suit.equals(firstSuit)) &&
-        (hand(4).value==i+5 && hand(4).suit.equals(firstSuit)))
+      if(hand.get(0).value==i &&
+        (hand.get(1).value==i+1 && hand.get(1).suit.equals(firstSuit)) &&
+        (hand.get(2).value==i+3 && hand.get(2).suit.equals(firstSuit)) &&
+        (hand.get(3).value==i+4 && hand.get(3).suit.equals(firstSuit)) &&
+        (hand.get(4).value==i+5 && hand.get(4).suit.equals(firstSuit)))
         return "Straight Flush";
      //Four of a Kind
-     if(hand(0).value == hand(3).value || hand(1).value == hand(4).value)
+     if(hand.get(0).value == hand.get(3).value || hand.get(1).value == hand.get(4).value)
         return "Four of a Kind,";
      //Full House
-     if((hand(0).value==hand(1) && hand(2).value==hand(4).value) ||
-        (hand(0).value==hand(2) && hand(3).value==hand(4).value) )
+     if((hand.get(0).value==hand.get(1).value && hand.get(2).value==hand.get(4).value) ||
+        (hand.get(0).value==hand.get(2).value && hand.get(3).value==hand.get(4).value) )
         return "Full House";
      //Flush
-     String[] otherSuits = { hand(1).suit, hand(2).suit, hand(3).suit, hand(4).suit};
+     String[] otherSuits = { hand.get(1).suit, hand.get(2).suit, hand.get(3).suit, hand.get(4).suit};
      boolean flush = false;
      for(int i = 0; i < 5; i++) {
         if(firstSuit.equals(otherSuits[0]) && firstSuit.equals(otherSuits[i]))
@@ -61,17 +59,17 @@ public class Hand implements Comparable {
         if(flush)
           return "Flush";
      //Straight
-     if(hand(0).value == hand(4).value-4)
+     if(hand.get(0).value == hand.get(4).value-4)
       return "Straight";
      //Three of a Kind
      for(int i = 0; i < 3; i++)
-        if(hand(i).value == hand(i+1).value-1 && hand(i+1).value == hand(i+2).value -1 || hand(i).value == hand(i+1).value+1 && hand(i+1).value == hand(i+2).value + 1) {
+        if(hand.get(i).value == hand.get(i+1).value-1 && hand.get(i+1).value == hand.get(i+2).value -1 || hand.get(i).value == hand.get(i+1).value+1 && hand.get(i+1).value == hand.get(i+2).value + 1) {
           return "Three of a Kind";
         }
      //Two Pair
      int count = 0;
      for(int i = 0; i < 4; i++)
-        if((hand(i).value == hand(i+1).value-1 || hand(i).value == hand(i+1).value+1)) {
+        if((hand.get(i).value == hand.get(i+1).value-1 || hand.get(i).value == hand.get(i+1).value+1)) {
           i++;
           count++;
         if(count == 2)
@@ -79,11 +77,11 @@ public class Hand implements Comparable {
         }
      //One Pair
      for(int i = 0; i < 4; i++)
-        if(hand(i).value == hand(i+1).value-1 || hand(i).value == hand(i+1).value+1) {
+        if(hand.get(i).value == hand.get(i+1).value-1 || hand.get(i).value == hand.get(i+1).value+1) {
           return "One Pair";
         }
      //High Card
-     return hand(4).value+"";
+     return hand.get(4).value+"";
      //WORST
 
    }
@@ -109,4 +107,5 @@ public class Hand implements Comparable {
         return 2;
       else{ return 1;}
    }
-}
+
+   }
