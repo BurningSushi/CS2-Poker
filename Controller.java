@@ -34,7 +34,11 @@ public class Controller
    }
 
    public static String findWinner(){
-      return hand1.compareTo(hand1, hand2);
+      if(hand1.compareTo(hand1) > hand2.compareTo(hand2))
+        return "Hand 1 Wins";
+      if(hand1.compareTo(hand1) < hand2.compareTo(hand2))
+        return "Hand 2 Wins";
+      else{ return "Tie" }
    }
 
 }
