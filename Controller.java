@@ -34,7 +34,7 @@ public class Controller
    }
 
    public static String findWinner(){
-      return hand1.compareTo(hand2);
+      return hand1.compareTo(hand1, hand2);
    }
 
 }
