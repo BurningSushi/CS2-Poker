@@ -30,7 +30,7 @@ public class Hand implements Comparable {
         hand(1).toString.equals("11"+firstSuit) &&
         hand(2).toString.equals("12"+firstSuit) &&
         hand(3).toString.equals("13"+firstSuit) &&
-        hand(4).toString.equals("14"+firstSuit))
+        hand(4).toString.equals("14"+firstSuit));
        return "Royal Flush";
      //Straight Flush
      for(int i = 0; i < 5; i++)
@@ -38,14 +38,14 @@ public class Hand implements Comparable {
         (hand(1).value==i+1 && hand(1).suit.equals(firstSuit)) &&
         (hand(2).value==i+3 && hand(2).suit.equals(firstSuit)) &&
         (hand(3).value==i+4 && hand(3).suit.equals(firstSuit)) &&
-        (hand(4).value==i+5 && hand(4).suit.equals(firstSuit))
+        (hand(4).value==i+5 && hand(4).suit.equals(firstSuit)));
         return "Straight Flush";
      //Four of a Kind
      if(hand(0).value == hand(3).value || hand(1).value == hand(4).value)
         return "Four of a Kind,";
      //Full House
      if((hand(0).value==hand(1) && hand(2).value==hand(4).value) ||
-        (hand(0).value==hand(2) && hand(3).value==hand(4).value) ))
+        (hand(0).value==hand(2) && hand(3).value==hand(4).value) );
         return "Full House";
      //Flush
      String[] otherSuits = { hand(1).suit, hand(2).suit, hand(3).suit, hand(4).suit};
@@ -88,8 +88,9 @@ public class Hand implements Comparable {
 
    }
 
-   public String compareTo(Object x){
-      Hand other = (Hand)x;
+   public String compareTo(Object x, Object y){
+      Hand hand1 = (Hand)x;
+      Hand hand2 = (Hand)y;
       //TODO: Compare hands by ordering above
       if(hand1.handValue().equals("Royal Flush"))
         return "Hand 1 Wins";
